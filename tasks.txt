@@ -1,0 +1,5 @@
+why is static typing more reliable and scalable compared to dynamic? - Richard.
+Why use exit codes (0, 1, + custom codes) in terms of design - finn
+Why is external config best for production code? - Andre
+What modern use cases for bitwise optimisations (c) - Joel
+Use case for pre-incrmenting + why is post more common? - basit
