@@ -4,3 +4,4 @@ Why is external config best for production code? - Andre
 What modern use cases for bitwise optimisations (c) - Joel
 Use case for pre-incrmenting + why is post more common? - basit
 REAL diff between null and u/0000 - Rory
+Overridding - postivies and negatives - ishaan
