@@ -5,3 +5,4 @@ What modern use cases for bitwise optimisations (c) - Joel
 Use case for pre-incrmenting + why is post more common? - basit
 REAL diff between null and u/0000 - Rory
 Overridding - postivies and negatives - ishaan
+Explain the basics of distributed caching and why its only done in production envs - Deepak
