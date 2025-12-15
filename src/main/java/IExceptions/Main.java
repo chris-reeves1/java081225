@@ -108,7 +108,6 @@ syntax:
     String s;
 } catch(IOException e){}
     
-
 }}
 
 propagation (bubbling up)
