@@ -2,25 +2,81 @@ package interfaces;
 
 public class Main {
    public static void main(String[] args) {
-    
+    IntegerContainer ic = new IntegerContainer();
+    ic.add(100);
+    System.out.println(ic.get());
+
+    GenricContainer<String> gc = new GenricContainer<>();
+    gc.add("£10@");
    }
 }
+class GenricContainer<T> implements Container<T>{
+    private T item;
 
-TODO:
-PaymentStrategy.java - interface with pay(int amount) abstract.
-2 * implementations
-class CreditCard implements PAaymentStrategy((){}paid..amount..by..cc
-class OtherMEthod implements PAaymentStrategy{}
-user:
-class ShoppingCart{
-    state
-    constructor
-    delegate checkout() method -- pay().
-Main:
-    shoppingcart + implementer objs
-    shoppingCart.checkout(100)
-)
+    @Override
+    public void add(T item){
+        this.item = item;
+    }
+    @Override
+    public T get(){
+        return item;
+    }
 }
+
+class IntegerContainer implements Container<Integer>{
+private int item;
+
+    @Override
+    public void add(Integer item){
+        this.item = item;
+    }
+    @Override
+    public Integer get(){
+        return item;
+}
+}
+
+
+
+
+//     Operation add = (a, b) -> a + b;
+//     Operation multiply = (a, b) -> a * b;
+
+//     System.out.println(multiply.apply(3, 4));
+
+
+//     ShoppingCart cart = new ShoppingCart(new PayPal());
+//     cart.checkout(2000);
+//    }
+// }
+
+// class CreditCard implements PaymentStrategy{
+//     @Override
+//     public void pay(int amount){
+//         System.out.println("Paid " + amount + " with CreditCard.");
+//     }
+// }
+// class PayPal implements PaymentStrategy{
+//     @Override
+//     public void pay(int amount){
+//         System.out.println("Paid " + amount + " with PayPal");
+//     }
+// }
+
+// class ShoppingCart{
+//     private PaymentStrategy strategy;
+
+//     public ShoppingCart(PaymentStrategy strategy){
+//         this.strategy = strategy;
+//     }
+
+//     public void checkout(int amount){
+//         strategy.pay(amount);
+//     }
+// }
+
+// in built interfaces:
+// - comparable()
 
 
 
@@ -137,8 +193,46 @@ package interfaces;
 public interface Logger {
     void log(String message);
 }
-
 }
+
+Marker Interfaces:
+- Tagging/marking a class with an empty interfaces. 
+- acts as a flag/tag/metadata
+- eg: serializable{} clonable{}
+
+- replaced by annotations.
+
+Functional interfaces:
+- @FunctionalInterface = SAM single abstract method.
+- lets us implement lambda functions.
+- streams, API, method references.
+
+Operation add = (a, b) -> a + b;
+    Operation multiply = (a, b) -> a * b;
+
+    System.out.println(multiply.apply(3, 4));
+
+package interfaces;
+
+@FunctionalInterface
+public interface Operation {
+    int apply(int a, int b);
+}
+
+Generic interfaces: 
+- types saftey
+- Flexibility
+
+syntax:
+    package interfaces;
+
+public interface Container<T> {
+    void add(T item);
+    T get();
+}
+
+
+
 
 
 */
