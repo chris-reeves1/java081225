@@ -1,3 +1,28 @@
+package interfaces;
+
+public class Main {
+   public static void main(String[] args) {
+    
+   }
+}
+
+TODO:
+PaymentStrategy.java - interface with pay(int amount) abstract.
+2 * implementations
+class CreditCard implements PAaymentStrategy((){}paid..amount..by..cc
+class OtherMEthod implements PAaymentStrategy{}
+user:
+class ShoppingCart{
+    state
+    constructor
+    delegate checkout() method -- pay().
+Main:
+    shoppingcart + implementer objs
+    shoppingCart.checkout(100)
+)
+}
+
+
 
 /*
 Interfaces
@@ -263,12 +288,6 @@ class ElectricCar extends Car1{
     // void something(){};
 }
 
-
-
-
-
-
-*/
 
 
 
