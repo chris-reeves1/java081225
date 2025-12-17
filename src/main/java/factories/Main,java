@@ -1,0 +1,122 @@
+package simpleFactory;
+
+public class SimpleFactory {
+    public static void main(String[] args) {
+        Meal meal = MealFactory.getMeal("pizza");
+        meal.serve();
+}
+}
+
+abstract class Meal{
+    abstract void serve();
+}
+
+// 2 x extending the abstract class
+
+class Pizza extends Meal {
+    @Override void serve(){System.out.println("serving pizza");};
+}
+class Pasta extends Meal {
+    @Override void serve(){System.out.println("serving pasta");};
+}
+
+//factory (conditional logic to see what to serve. )
+class MealFactory {
+    static Meal getMeal(String type){
+        if("pizza".equalsIgnoreCase(type)){return new Pizza();}
+        if("pasta".equalsIgnoreCase(type)){return new Pasta();}
+        throw new IllegalArgumentException("must be pizza or pasta");
+    }
+}
+
+// simple factory: uses if/switch + hides new()
+
+
+package FactoryMethod;
+
+public class FactoryMethod {
+    public static void main(String[] args) {
+        Resturant r = new PastaResturant();
+        r.serveCustomer();
+    }
+}
+// abstract class 
+abstract class Meal{abstract void serve();}
+// extends with options
+class Pizza extends Meal {void serve(){System.out.println("serving pizza");}}
+class Pasta extends Meal {void serve(){System.out.println("serving pasta");}}
+
+
+
+abstract class Resturant{
+    protected abstract Meal createMeal();
+    
+    // template pattern
+    public void serveCustomer(){
+        Meal meal = createMeal();
+        meal.serve();
+    }
+}
+class PastaResturant extends Resturant {protected Meal createMeal(){return new Pasta();}}
+class PizzaResturant extends Resturant {protected Meal createMeal(){return new Pizza();}}
+
+
+
+
+
+
+package AbstractFactory;
+
+public class AbstractFactory {
+    public static void main(String[] args) {
+        MealService service = new MealService(new JapaneseMealFactory());
+        service.full();
+    }
+}
+
+// interfaces for mainCourse, Drink, Dessert. (abstract for serve())
+interface MainCourse { void serve();}
+interface Dessert { void serve();}
+interface Drink { void serve();}
+
+class Pasta implements MainCourse{@Override public void serve(){System.out.println("serving pasta");}}
+class Tiramisu implements Dessert{@Override public void serve(){System.out.println("serving tiramisu");}}
+class Wine implements Drink{@Override public void serve(){System.out.println("serving wine");}}
+
+class Sake implements Drink{@Override public void serve(){System.out.println("serving sake");}}
+class Mochi implements Dessert{@Override public void serve(){System.out.println("serving mochi");}}
+class Katsu implements MainCourse{@Override public void serve(){System.out.println("serving katsu");}}
+
+// abstract interface factory set MainCourse, drink, dessert -- abstract method.  
+interface MealFactorys{
+    MainCourse createMain();
+    Drink createDrink();
+    Dessert createDessert();
+}
+// japanese factory
+class JapaneseMealFactory implements MealFactorys {
+    @Override public MainCourse createMain() {return new Katsu();}
+    @Override public Drink createDrink() {return new Sake();}
+    @Override public Dessert createDessert() {return new Mochi();}
+}
+class ItalianMealFactory implements MealFactorys {
+    @Override public MainCourse createMain() {return new Pasta();}
+    @Override public Drink createDrink() {return new Wine();}
+    @Override public Dessert createDessert() {return new Tiramisu();}
+}
+
+// concrete implemntation.
+class MealService{
+    MealFactorys factory;
+
+    public MealService(MealFactorys factory){
+        this.factory = factory;
+    }
+    // template
+    void full(){
+        factory.createMain().serve();
+        factory.createDrink().serve();
+        factory.createDessert().serve();
+    }
+
+}
