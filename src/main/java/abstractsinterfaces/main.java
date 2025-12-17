@@ -1,41 +1,50 @@
 package interfaces;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Main {
-   public static void main(String[] args) {
-    IntegerContainer ic = new IntegerContainer();
-    ic.add(100);
-    System.out.println(ic.get());
+    public static void main(String[] args){
+        List<Person> person = new ArrayList<>();
+        person.add(new Person(60, "C"));
+        person.add(new Person(80, "B"));
+        person.add(new Person(60, "A"));
 
-    GenricContainer<String> gc = new GenricContainer<>();
-    gc.add("£10@");
-   }
-}
-class GenricContainer<T> implements Container<T>{
-    private T item;
+        Collections.sort(person);
+        for (Person x: person){
+            System.out.println(x.getAge() + " " + x.getName());
+        }
 
-    @Override
-    public void add(T item){
-        this.item = item;
-    }
-    @Override
-    public T get(){
-        return item;
     }
 }
-
-class IntegerContainer implements Container<Integer>{
-private int item;
-
-    @Override
-    public void add(Integer item){
-        this.item = item;
+   
+// inbuilt interfaces - 100's+ learn a few. 
+// comparable
+// allows us to define how objects get compared to eachother.
+// smallest to largest
+// useful sorting - Collections.sort() -- implements it! 
+class Person implements Comparable<Person>{
+    private int age;
+    private String name;
+    
+    public Person(int age, String name) {
+        this.age = age;
+        this.name = name;
     }
-    @Override
-    public Integer get(){
-        return item;
-}
-}
 
+    public int getAge(){return age;}
+    public void setAge(int age) {this.age = age;}
+    public String getName(){return name;}
+    public void setName(String name){this.name = name;}
+
+    @Override
+    public int compareTo(Person x){
+        int result = Integer.compare(this.age, x.age);
+        if (result !=0) {return result;}
+        return this.name.compareTo(x.name);
+    }
+}
 
 
 
@@ -232,6 +241,40 @@ public interface Container<T> {
 }
 
 
+public static void main(String[] args) {
+    IntegerContainer ic = new IntegerContainer();
+    ic.add(100);
+    System.out.println(ic.get());
+
+    GenricContainer<String> gc = new GenricContainer<>();
+    gc.add("£10@");
+   }
+}
+class GenricContainer<T> implements Container<T>{
+    private T item;
+
+    @Override
+    public void add(T item){
+        this.item = item;
+    }
+    @Override
+    public T get(){
+        return item;
+    }
+}
+
+class IntegerContainer implements Container<Integer>{
+private int item;
+
+    @Override
+    public void add(Integer item){
+        this.item = item;
+    }
+    @Override
+    public Integer get(){
+        return item;
+}
+}
 
 
 
