@@ -24,7 +24,7 @@ Required:
 
 Refactor & Redesign:
     Encapsulation
-    Remove smells
+    Remove smells - 30+ smells when code quality checker is run. 
     Meaningful naming & structure
 
 Factory/Centralised Creation:
@@ -32,7 +32,7 @@ Factory/Centralised Creation:
     Adding a new species should require minimal change outside the factory
 
 Meaningful multi Thread:    
-    The thread must call a named method.
+    Add one thread - the thread must call a named method.
     Use Thread or Runnable.
 
 Constraints:
