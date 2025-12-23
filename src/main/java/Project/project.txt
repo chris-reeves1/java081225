@@ -1,0 +1,48 @@
+Design Assessment Animals Project:
+
+Deadline = by 12.00
+
+Submission:
+
+One file only: 
+    Main.java, runnable as-is.
+    Submit via repo link or email attachment.
+
+    At the top of Main.java, include a header comment stating:
+    What you refactored. 
+
+
+INTENT:
+This is a design-focused refactoring exercise.
+Functionality is intentionally minimal, your goal is to improve structure, 
+reduce smells, and show clean OO thinking, not to build new features.
+
+The existing implementation contains deliberate design problems.
+You should improve the design while keeping behaviour recognisably similar.
+
+Required:
+
+Refactor & Redesign:
+    Encapsulation
+    Remove smells
+    Meaningful naming & structure
+
+Factory/Centralised Creation:
+    Main() must no longer call new Dog(...), new Cat(...), etc. directly
+    Adding a new species should require minimal change outside the factory
+
+Meaningful multi Thread:    
+    The thread must call a named method.
+    Use Thread or Runnable.
+
+Constraints:
+    Must remain one file only: Main.java
+    Output may differ slightly but must remain recognisable
+    No additional libraries
+    No need to over-engineer
+
+Marking Breakdown:
+Refactor & Redesign Quality: 60%
+Factory/Construction Abstraction: 20%
+Background Thread: 20%
+Discretionary: 10%
